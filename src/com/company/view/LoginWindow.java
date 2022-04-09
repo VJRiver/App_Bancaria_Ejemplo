@@ -42,6 +42,7 @@ public class LoginWindow extends JFrame {
 				}
 			}
 		});
+		
 	}
 
 	
@@ -97,9 +98,15 @@ public class LoginWindow extends JFrame {
 		contentPane.add(btnBorrar);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		
 		btnAceptar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				validar(txtUsuario.getText(), txtPassword.getPassword().toString());
+				boolean aceptado = validar(txtUsuario.getText(), txtPassword.getPassword().toString());
+				if(aceptado == true) {
+					MainMenu menuPrincipal = new MainMenu();
+					setVisible(false);
+					
+				}
 			}
 		});
 		btnAceptar.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
@@ -133,16 +140,18 @@ public class LoginWindow extends JFrame {
 	 * Valida contraseña y password
 	 * cambiarlo para que obtenga los datos de una base de datos
 	 */
-	public void validar(String User, String pass) {
-
+	public boolean validar(String User, String pass) {
+		boolean acceso = false;
 		if(password.contains(pass) || user.contains(User)) {
 			lblError.setText("Iniciando servicio");
-			
+			acceso = true;
 			}
 		else {
 			
 			lblError.setText("Usuario y/o contrasena invalidos");
+			acceso = false;
 		}
+		return acceso;
 	}
 }
 
