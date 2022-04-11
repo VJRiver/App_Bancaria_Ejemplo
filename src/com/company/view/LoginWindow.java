@@ -57,7 +57,7 @@ public class LoginWindow extends JFrame {
 		setTitle("Login Page");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setBounds(100, 100, 797, 454);
+		setBounds(250, 150, 797, 454);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -106,9 +106,9 @@ public class LoginWindow extends JFrame {
 				if(aceptado == true) {
 					MainMenu menuPrincipal = new MainMenu();
 					menuAbierto = true;
-					setVisible(false);
+					dispose();
 					if(menuAbierto == false) {
-						setVisible(true);
+						
 						System.out.println("valor de menuAbierto: " + menuAbierto);
 					}
 					

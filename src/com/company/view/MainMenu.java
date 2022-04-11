@@ -78,10 +78,12 @@ public class MainMenu extends JFrame{
 			public void actionPerformed(ActionEvent e) {
 				try {
 					addWindowListener(new WindowAdapter() {
+						
 						public void windowClosed(WindowEvent ev){
 							LoginWindow.menuAbierto = false;
 							System.out.println("Menu cerrado");
 							System.out.println("Valor de menuAbierto: " + LoginWindow.menuAbierto);
+							
 						}
 					});
 					
