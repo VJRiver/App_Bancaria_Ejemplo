@@ -20,6 +20,7 @@ public class LoginWindow extends JFrame {
 	private JTextField txtUsuario;
 	private JPasswordField txtPassword;
 	private JLabel lblError;
+	public static boolean menuAbierto = false;
 	/*
 	 * Guardan usuario y password -- cambiarlo después para que su valor
 	 * lo obtengan de una base de datos --
@@ -104,9 +105,16 @@ public class LoginWindow extends JFrame {
 				boolean aceptado = validar(txtUsuario.getText(), txtPassword.getPassword().toString());
 				if(aceptado == true) {
 					MainMenu menuPrincipal = new MainMenu();
+					menuAbierto = true;
 					setVisible(false);
+					if(menuAbierto == false) {
+						setVisible(true);
+						System.out.println("valor de menuAbierto: " + menuAbierto);
+					}
 					
 				}
+				
+				
 			}
 		});
 		btnAceptar.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
