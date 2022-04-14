@@ -76,14 +76,13 @@ public class MainMenu extends JFrame{
 		
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				dispose();
 				try {
 					addWindowListener(new WindowAdapter() {
 						
 						public void windowClosed(WindowEvent ev){
-							LoginWindow.menuAbierto = false;
-							System.out.println("Menu cerrado");
-							System.out.println("Valor de menuAbierto: " + LoginWindow.menuAbierto);
-							
+							LoginWindow ventanaLogin = new LoginWindow();
+							ventanaLogin.setVisible(true);
 						}
 					});
 					
