@@ -64,6 +64,7 @@ public class LoginWindow extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		
 		JLabel lblUserName = new JLabel("Usuario");
 		lblUserName.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
 		lblUserName.setBounds(224, 118, 92, 24);
@@ -100,6 +101,8 @@ public class LoginWindow extends JFrame {
 		contentPane.add(btnBorrar);
 		
 		JButton btnAceptar = new JButton("Aceptar");
+		
+		
 		
 		btnAceptar.addActionListener(new ActionListener() {
 			

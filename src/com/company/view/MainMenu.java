@@ -74,6 +74,13 @@ public class MainMenu extends JFrame{
 			}
 		});
 		
+		btnATM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AtmFrame cuadroAtm = new AtmFrame();
+				
+			}
+		});
+		
 		btnSalir.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
