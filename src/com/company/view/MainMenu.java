@@ -2,20 +2,23 @@ package com.company.view;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
 public class MainMenu extends JFrame{
 	
+	/*
+	 * Botones de las opciones del menú
+	 */
+	JLabel lblTitulo;
+	JButton btnApp, btnATM, btnPerfil, btnSalir;
+	
 	public MainMenu() {
+		
 		JPanel firstPanel = new JPanel();
-		/*
-		 * Botones de las opciones del menú
-		 */
-		JLabel lblTitulo;
-		JButton btnApp, btnATM, btnPerfil, btnSalir;
-		
-		
+				
 		setTitle("MENÚ PRINCIPAL");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(300, 100, 650, 350);
@@ -53,10 +56,15 @@ public class MainMenu extends JFrame{
 		firstPanel.add(btnSalir);
 		firstPanel.add(Box.createGlue());
 		
-		/*
-		 * Añadimos eventos a cada botón (btnApp, btnATM, btnPerfil, btnSalir)
-		 */
 		
+		setContentPane(firstPanel);
+		
+		setVisible(true);
+	
+	/*
+	 * Añadimos eventos a cada botón (btnApp, btnATM, btnPerfil, btnSalir)
+	 */
+	
 		btnApp.addActionListener(new ActionListener() {
 			
 			@Override
@@ -66,12 +74,35 @@ public class MainMenu extends JFrame{
 			}
 		});
 		
+		btnATM.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AtmFrame cuadroAtm = new AtmFrame();
+				
+			}
+		});
 		
-		setContentPane(firstPanel);
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				try {
+					addWindowListener(new WindowAdapter() {
+						
+						public void windowClosed(WindowEvent ev){
+							LoginWindow ventanaLogin = new LoginWindow();
+							ventanaLogin.setVisible(true);
+						}
+					});
+					
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
 		
-		setVisible(true);
+		
 	}
-
+		
+	
 }
 
 

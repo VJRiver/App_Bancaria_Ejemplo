@@ -11,6 +11,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
 
@@ -20,11 +21,12 @@ public class LoginWindow extends JFrame {
 	private JTextField txtUsuario;
 	private JPasswordField txtPassword;
 	private JLabel lblError;
+	
 	/*
 	 * Guardan usuario y password -- cambiarlo después para que su valor
 	 * lo obtengan de una base de datos --
 	 */
-	private String password = "Grupo";
+	private char[] password = {'G','r','u','p','o'};
 	private String user = "Neurotico";
 	
 
@@ -56,11 +58,12 @@ public class LoginWindow extends JFrame {
 		setTitle("Login Page");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		setBounds(100, 100, 797, 454);
+		setBounds(250, 150, 797, 454);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
 		
 		JLabel lblUserName = new JLabel("Usuario");
 		lblUserName.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
@@ -99,14 +102,25 @@ public class LoginWindow extends JFrame {
 		
 		JButton btnAceptar = new JButton("Aceptar");
 		
+		
+		
 		btnAceptar.addActionListener(new ActionListener() {
+			
 			public void actionPerformed(ActionEvent e) {
-				boolean aceptado = validar(txtUsuario.getText(), txtPassword.getPassword().toString());
-				if(aceptado == true) {
-					MainMenu menuPrincipal = new MainMenu();
-					setVisible(false);
+							
+				//System.out.println("Valor de txtUsuario: " + txtUsuario.getText());
+				//System.out.println("Valor de txtPassword: " + txtPassword.getPassword().toString());
+				boolean aceptar = validar(txtUsuario.getText(), password);
+				System.out.println("Valor de la fx validar: " + aceptar);
+				if(aceptar) {
 					
+					MainMenu menuPrincipal = new MainMenu();
+					
+					dispose();
+									
 				}
+				
+				
 			}
 		});
 		btnAceptar.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
@@ -140,18 +154,20 @@ public class LoginWindow extends JFrame {
 	 * Valida contraseña y password
 	 * cambiarlo para que obtenga los datos de una base de datos
 	 */
-	public boolean validar(String User, String pass) {
-		boolean acceso = false;
-		if(password.contains(pass) || user.contains(User)) {
+	public boolean validar(String User, char[] pass) {
+		
+		//System.out.println("Valor de argumento User: " + User);
+		//System.out.println("Valor de argumento pass: " + pass);
+		if(user.contains(User) && Arrays.equals(txtPassword.getPassword(), pass)) {
 			lblError.setText("Iniciando servicio");
-			acceso = true;
+			return true;
 			}
 		else {
 			
 			lblError.setText("Usuario y/o contrasena invalidos");
-			acceso = false;
+			return false;
 		}
-		return acceso;
+		
 	}
 }
 
