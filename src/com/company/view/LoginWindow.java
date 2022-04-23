@@ -23,7 +23,7 @@ public class LoginWindow extends JFrame {
 	private JLabel lblError;
 	
 	/*
-	 * Guardan usuario y password -- cambiarlo después para que su valor
+	 * Guardan usuario y password -- cambiarlo despuï¿½s para que su valor
 	 * lo obtengan de una base de datos --
 	 */
 	private char[] password = {'G','r','u','p','o'};
@@ -108,8 +108,6 @@ public class LoginWindow extends JFrame {
 			
 			public void actionPerformed(ActionEvent e) {
 							
-				//System.out.println("Valor de txtUsuario: " + txtUsuario.getText());
-				//System.out.println("Valor de txtPassword: " + txtPassword.getPassword().toString());
 				boolean aceptar = validar(txtUsuario.getText(), password);
 				System.out.println("Valor de la fx validar: " + aceptar);
 				if(aceptar) {
@@ -130,7 +128,7 @@ public class LoginWindow extends JFrame {
 		JButton btnCancelar = new JButton("Cancelar");
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(JOptionPane.showConfirmDialog(null, "¿Desea salir del programa?", "Warning", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
+				if(JOptionPane.showConfirmDialog(null, "Â¿Desea salir del programa?", "Warning", JOptionPane.YES_NO_OPTION,JOptionPane.WARNING_MESSAGE) == JOptionPane.YES_OPTION) {
 					System.out.println("Hasta luego!");
 					System.exit(0);
 				}
@@ -151,7 +149,7 @@ public class LoginWindow extends JFrame {
 	}
 	
 	/*
-	 * Valida contraseña y password
+	 * Valida contraseï¿½a y password
 	 * cambiarlo para que obtenga los datos de una base de datos
 	 */
 	public boolean validar(String User, char[] pass) {

@@ -7,10 +7,10 @@ import java.awt.event.WindowEvent;
 
 import javax.swing.*;
 
-public class MainMenu extends JFrame{
+public class MainMenu extends JDialog{
 	
 	/*
-	 * Botones de las opciones del menú
+	 * Botones de las opciones del menï¿½
 	 */
 	JLabel lblTitulo;
 	JButton btnApp, btnATM, btnPerfil, btnSalir;
@@ -19,19 +19,26 @@ public class MainMenu extends JFrame{
 		
 		JPanel firstPanel = new JPanel();
 				
-		setTitle("MENÚ PRINCIPAL");
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setTitle("MENÃš PRINCIPAL");
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(300, 100, 650, 350);
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		
 		firstPanel.setLayout(new BoxLayout(firstPanel, BoxLayout.PAGE_AXIS));
+		this.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent ev) {
+				LoginWindow ventanaLogin = new LoginWindow();
+				ventanaLogin.setVisible(true);
+				dispose();
+			}
+		});
 		
 		/*
-		 * Inicializamos y añadimos componentes al panel principal
+		 * Inicializamos y aï¿½adimos componentes al panel principal
 		 */
 		
 		firstPanel.add(Box.createGlue());
-		lblTitulo = new JLabel("Escoja la opción:");
+		lblTitulo = new JLabel("Escoja la opciÃ³n:");
 		lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		firstPanel.add(lblTitulo);
 		firstPanel.add(Box.createGlue());
@@ -41,7 +48,7 @@ public class MainMenu extends JFrame{
 		firstPanel.add(btnApp);
 		firstPanel.add(Box.createGlue());
 		
-		btnATM = new JButton("Cajero Automático");
+		btnATM = new JButton("Cajero AutomÃ¡tico");
 		btnATM.setAlignmentX(Component.CENTER_ALIGNMENT);
 		firstPanel.add(btnATM);
 		firstPanel.add(Box.createGlue());
@@ -51,7 +58,7 @@ public class MainMenu extends JFrame{
 		firstPanel.add(btnPerfil);
 		firstPanel.add(Box.createGlue());
 		
-		btnSalir = new JButton("Cerrar sesión");
+		btnSalir = new JButton("Cerrar sesiÃ³n");
 		btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
 		firstPanel.add(btnSalir);
 		firstPanel.add(Box.createGlue());
@@ -62,7 +69,7 @@ public class MainMenu extends JFrame{
 		setVisible(true);
 	
 	/*
-	 * Añadimos eventos a cada botón (btnApp, btnATM, btnPerfil, btnSalir)
+	 * Aï¿½adimos eventos a cada botï¿½n (btnApp, btnATM, btnPerfil, btnSalir)
 	 */
 	
 		btnApp.addActionListener(new ActionListener() {
@@ -76,7 +83,15 @@ public class MainMenu extends JFrame{
 		
 		btnATM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AtmFrame cuadroAtm = new AtmFrame();
+				AtmDialog cuadroAtm = new AtmDialog();
+				cuadroAtm.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				
+				try {
+					
+				}catch(Exception ex) {
+					ex.getMessage();
+					ex.printStackTrace();
+				}
 				
 			}
 		});

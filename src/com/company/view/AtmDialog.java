@@ -9,13 +9,14 @@ import javax.swing.border.EmptyBorder;
 import java.awt.Color;
 import java.awt.Font;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.BoxLayout;
 import java.awt.Component;
 import javax.swing.SpringLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AtmFrame extends JFrame {
+public class AtmDialog extends JDialog {
 
 	private JPanel contentPane;
 	/**
@@ -37,12 +38,12 @@ public class AtmFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AtmFrame() {
+	public AtmDialog() {
 		setFont(new Font("Calisto MT", Font.BOLD, 17));
 		setTitle("ATM - Opciones");
 		setForeground(Color.BLACK);
 		setBackground(new Color(0, 102, 0));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 726, 593);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(153, 204, 255));
