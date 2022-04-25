@@ -6,6 +6,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 
 import javax.swing.*;
+import java.awt.Font;
 
 public class MainMenu extends JFrame{
 	
@@ -13,7 +14,7 @@ public class MainMenu extends JFrame{
 	 * Botones de las opciones del menú
 	 */
 	JLabel lblTitulo;
-	JButton btnApp, btnATM, btnPerfil, btnSalir;
+	JButton btnOpciones, btnATM, btnPerfil, btnSalir;
 	
 	public MainMenu() {
 		
@@ -21,7 +22,7 @@ public class MainMenu extends JFrame{
 				
 		setTitle("MENÚ PRINCIPAL");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(300, 100, 650, 350);
+		setBounds(450, 200, 650, 350);
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		
 		firstPanel.setLayout(new BoxLayout(firstPanel, BoxLayout.PAGE_AXIS));
@@ -32,51 +33,65 @@ public class MainMenu extends JFrame{
 		
 		firstPanel.add(Box.createGlue());
 		lblTitulo = new JLabel("Escoja la opción:");
+		lblTitulo.setFont(new Font("Lucida Sans", Font.BOLD | Font.ITALIC, 14));
 		lblTitulo.setAlignmentX(Component.CENTER_ALIGNMENT);
 		firstPanel.add(lblTitulo);
 		firstPanel.add(Box.createGlue());
 		
-		btnApp = new JButton("App");
-		btnApp.setAlignmentX(Component.CENTER_ALIGNMENT);
-		firstPanel.add(btnApp);
+		btnOpciones = new JButton("Mas Opciones...");
+		btnOpciones.setFont(new Font("Lucida Sans", Font.ITALIC, 12));
+		btnOpciones.setAlignmentX(Component.CENTER_ALIGNMENT);
+		firstPanel.add(btnOpciones);
 		firstPanel.add(Box.createGlue());
 		
 		btnATM = new JButton("Cajero Automático");
+		btnATM.setFont(new Font("Lucida Sans", Font.ITALIC, 12));
 		btnATM.setAlignmentX(Component.CENTER_ALIGNMENT);
 		firstPanel.add(btnATM);
 		firstPanel.add(Box.createGlue());
 		
 		btnPerfil = new JButton("Perfil de usuario");
+		btnPerfil.setFont(new Font("Lucida Sans", Font.ITALIC, 12));
 		btnPerfil.setAlignmentX(Component.CENTER_ALIGNMENT);
 		firstPanel.add(btnPerfil);
 		firstPanel.add(Box.createGlue());
 		
 		btnSalir = new JButton("Cerrar sesión");
+		btnSalir.setFont(new Font("Lucida Sans", Font.ITALIC, 12));
 		btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
 		firstPanel.add(btnSalir);
 		firstPanel.add(Box.createGlue());
 		
 		
+		
+		
 		setContentPane(firstPanel);
 		
 		setVisible(true);
+		
+		addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				LoginWindow ventanaLogin = new LoginWindow();
+				ventanaLogin.setVisible(true);
+			}
+		});
 	
 	/*
 	 * Añadimos eventos a cada botón (btnApp, btnATM, btnPerfil, btnSalir)
 	 */
 	
-		btnApp.addActionListener(new ActionListener() {
+		btnOpciones.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				
+				OpcionesDialog ventanaOpciones = new OpcionesDialog();
 			}
 		});
 		
 		btnATM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AtmFrame cuadroAtm = new AtmFrame();
+				AtmDialog cuadroAtm = new AtmDialog();
 				
 			}
 		});
