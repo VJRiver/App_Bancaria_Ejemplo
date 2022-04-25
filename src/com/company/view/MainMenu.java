@@ -15,6 +15,7 @@ public class MainMenu extends JFrame{
 	 */
 	JLabel lblTitulo;
 	JButton btnOpciones, btnATM, btnPerfil, btnSalir;
+	private JButton btnAyuda;
 	
 	public MainMenu() {
 		
@@ -22,7 +23,7 @@ public class MainMenu extends JFrame{
 				
 		setTitle("MENÚ PRINCIPAL");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setBounds(450, 200, 650, 350);
+		setBounds(450, 200, 650, 405);
 		JFrame.setDefaultLookAndFeelDecorated(true);
 		
 		firstPanel.setLayout(new BoxLayout(firstPanel, BoxLayout.PAGE_AXIS));
@@ -56,10 +57,34 @@ public class MainMenu extends JFrame{
 		firstPanel.add(btnPerfil);
 		firstPanel.add(Box.createGlue());
 		
+		btnAyuda = new JButton("Ayuda");
+		btnAyuda.setFont(new Font("Lucida Sans", Font.ITALIC, 12));
+		btnAyuda.setAlignmentX(0.5f);
+		firstPanel.add(btnAyuda);
+		firstPanel.add(Box.createGlue());
+		
 		btnSalir = new JButton("Cerrar sesión");
 		btnSalir.setFont(new Font("Lucida Sans", Font.ITALIC, 12));
 		btnSalir.setAlignmentX(Component.CENTER_ALIGNMENT);
 		firstPanel.add(btnSalir);
+		
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				try {
+					addWindowListener(new WindowAdapter() {
+						
+						public void windowClosed(WindowEvent ev){
+							LoginWindow ventanaLogin = new LoginWindow();
+							ventanaLogin.setVisible(true);
+						}
+					});
+					
+				}catch(Exception ex) {
+					ex.printStackTrace();
+				}
+			}
+		});
 		firstPanel.add(Box.createGlue());
 		
 		
@@ -92,25 +117,8 @@ public class MainMenu extends JFrame{
 		btnATM.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AtmDialog cuadroAtm = new AtmDialog();
+				setVisible(false);
 				
-			}
-		});
-		
-		btnSalir.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				try {
-					addWindowListener(new WindowAdapter() {
-						
-						public void windowClosed(WindowEvent ev){
-							LoginWindow ventanaLogin = new LoginWindow();
-							ventanaLogin.setVisible(true);
-						}
-					});
-					
-				}catch(Exception ex) {
-					ex.printStackTrace();
-				}
 			}
 		});
 		

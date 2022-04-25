@@ -31,7 +31,8 @@ public class AtmDialog extends JDialog {
 		setTitle("ATM - Opciones");
 		setForeground(Color.BLACK);
 		setBackground(new Color(0, 102, 0));
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(400, 200, 726, 593);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(153, 204, 255));
@@ -88,7 +89,17 @@ public class AtmDialog extends JDialog {
 		btnTransferir.setFont(new Font("Lucida Sans", Font.ITALIC, 13));
 		contentPane.add(btnTransferir);
 		
+		/*
+		 * Reabrimos un MainMenu y cerramos esta ventana
+		 */
+		
 		JButton btnMenu = new JButton("MENU PRINCIPAL");
+		btnMenu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				MainMenu menuPrincipal = new MainMenu();
+				dispose();
+			}
+		});
 		sl_contentPane.putConstraint(SpringLayout.NORTH, btnMenu, 457, SpringLayout.NORTH, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.WEST, btnMenu, 274, SpringLayout.WEST, contentPane);
 		sl_contentPane.putConstraint(SpringLayout.SOUTH, btnMenu, 488, SpringLayout.NORTH, contentPane);

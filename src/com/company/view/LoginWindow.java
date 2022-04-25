@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
@@ -21,6 +23,9 @@ public class LoginWindow extends JFrame {
 	private JTextField txtUsuario;
 	private JPasswordField txtPassword;
 	private JLabel lblError;
+	private static LoginWindow frame;
+	
+	
 	
 	/*
 	 * Guardan usuario y password -- cambiarlo después para que su valor
@@ -37,7 +42,7 @@ public class LoginWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginWindow frame = new LoginWindow();
+					frame = new LoginWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -150,6 +155,15 @@ public class LoginWindow extends JFrame {
 		contentPane.add(txtPassword);
 		
 		JButton btnNuevoUsuario = new JButton("Nuevo Usuario");
+		btnNuevoUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setState(JFrame.ICONIFIED);
+				RegistroDialog ventanaRegistro = new RegistroDialog(frame);
+				ventanaRegistro.setVisible(true);
+				
+				
+			}
+		});
 		btnNuevoUsuario.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
 		btnNuevoUsuario.setBounds(541, 361, 160, 21);
 		contentPane.add(btnNuevoUsuario);
