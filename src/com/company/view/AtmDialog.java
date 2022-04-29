@@ -32,8 +32,12 @@ public class AtmDialog extends JDialog {
 		setForeground(Color.BLACK);
 		setBackground(new Color(0, 102, 0));
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+<<<<<<< HEAD
+		setBounds(100, 100, 726, 593);
+=======
 		//setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(400, 200, 726, 593);
+>>>>>>> 6174a6e8e18d81a893f20f418b9ba7e2f0ee167c
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(153, 204, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
