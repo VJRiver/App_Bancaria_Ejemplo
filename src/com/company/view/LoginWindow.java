@@ -11,6 +11,8 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowStateListener;
 import java.util.Arrays;
 import java.awt.event.ActionEvent;
 
@@ -21,6 +23,9 @@ public class LoginWindow extends JFrame {
 	private JTextField txtUsuario;
 	private JPasswordField txtPassword;
 	private JLabel lblError;
+	private static LoginWindow frame;
+	
+	
 	
 	/*
 	 * Guardan usuario y password -- cambiarlo despu�s para que su valor
@@ -37,7 +42,7 @@ public class LoginWindow extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					LoginWindow frame = new LoginWindow();
+					frame = new LoginWindow();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,22 +72,22 @@ public class LoginWindow extends JFrame {
 		
 		JLabel lblUserName = new JLabel("Usuario");
 		lblUserName.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
-		lblUserName.setBounds(224, 118, 92, 24);
+		lblUserName.setBounds(224, 138, 92, 24);
 		contentPane.add(lblUserName);
 		
 		txtUsuario = new JTextField();
-		txtUsuario.setBounds(341, 122, 262, 19);
+		txtUsuario.setBounds(341, 142, 262, 19);
 		contentPane.add(txtUsuario);
 		txtUsuario.setColumns(10);
 		
 		JLabel lblPassword = new JLabel("Contrase\u00F1a");
 		lblPassword.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
-		lblPassword.setBounds(224, 171, 115, 13);
+		lblPassword.setBounds(224, 191, 115, 13);
 		contentPane.add(lblPassword);
 		
 		JLabel lblTitulo = new JLabel("Acceso");
 		lblTitulo.setFont(new Font("Copperplate Gothic Bold", Font.PLAIN, 18));
-		lblTitulo.setBounds(341, 43, 79, 13);
+		lblTitulo.setBounds(351, 43, 79, 13);
 		contentPane.add(lblTitulo);
 		
 		JSeparator separator = new JSeparator();
@@ -97,7 +102,7 @@ public class LoginWindow extends JFrame {
 			}
 		});
 		btnBorrar.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
-		btnBorrar.setBounds(224, 361, 101, 21);
+		btnBorrar.setBounds(146, 361, 101, 21);
 		contentPane.add(btnBorrar);
 		
 		JButton btnAceptar = new JButton("Aceptar");
@@ -122,7 +127,7 @@ public class LoginWindow extends JFrame {
 			}
 		});
 		btnAceptar.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
-		btnAceptar.setBounds(341, 361, 107, 21);
+		btnAceptar.setBounds(265, 361, 107, 21);
 		contentPane.add(btnAceptar);
 		
 		JButton btnCancelar = new JButton("Cancelar");
@@ -135,7 +140,7 @@ public class LoginWindow extends JFrame {
 			}
 		});
 		btnCancelar.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
-		btnCancelar.setBounds(468, 361, 135, 21);
+		btnCancelar.setBounds(392, 361, 135, 21);
 		contentPane.add(btnCancelar);
 		
 		lblError = new JLabel("");
@@ -144,8 +149,22 @@ public class LoginWindow extends JFrame {
 		contentPane.add(lblError);
 		
 		txtPassword = new JPasswordField();
-		txtPassword.setBounds(341, 169, 262, 19);
+		txtPassword.setBounds(341, 189, 262, 19);
 		contentPane.add(txtPassword);
+		
+		JButton btnNuevoUsuario = new JButton("Nuevo Usuario");
+		btnNuevoUsuario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setState(JFrame.ICONIFIED);
+				RegistroDialog ventanaRegistro = new RegistroDialog(frame);
+				ventanaRegistro.setVisible(true);
+				
+				
+			}
+		});
+		btnNuevoUsuario.setFont(new Font("Copperplate Gothic Light", Font.PLAIN, 15));
+		btnNuevoUsuario.setBounds(541, 361, 160, 21);
+		contentPane.add(btnNuevoUsuario);
 	}
 	
 	/*
